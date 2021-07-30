@@ -4,4 +4,5 @@ UP CAPES Skills Test - IT Web Development
 
 Changes:
 
-1. Changed bootstrap/Font Awesome version to
+1. Added check/x icon
+2. Changed the border color depending on the submit status
