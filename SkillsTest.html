@@ -6,10 +6,10 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
-  <script>
-  </script>
-
+  
+  
   <style>
+    
     .form-group i{
       position:absolute;
       padding-left: 8px;
@@ -34,40 +34,43 @@
       visibility:visible;
       color: #e74c3c;
     }
+
+  
   </style>
 
 </head>
 <body>
-  <main class="m-3 p-3 d-flex justify-content-center align-items-center h-100">
-    <div class="container-fluid ">
+  <main class="m-3 p-3 d-flex justify-content-center align-items-center h-100 w-500">
+    <div class="container-fluid">
       <div class="row h-100">
         <!-- THE LEFT SECTION -->
         <div class="col-12 col-sm-12 col-md-6">
           <div class="panel bg-light">
             <div class="panel-body p-3">
-              <form action="#">
-                <h3 style="text-align:center;" for="name">
+              <form action="#" id="form">
+                <h3 style="text-align:center;" for="name" class="form">
                     Contact Details
                  </h3>
                 <!-- Name -->
-                <div class="form-group success">
+                <div class="form-group">
                   <label class="control-label" for="name">
                     Name:
                   </label>
                   <i class="fa fa-check-circle" aria-hidden="true"></i>
                   <i class="fa fa-times-circle" aria-hidden="true"></i>
-                  <input  class="form-control" type="text" id="name" name="name" />
-                  
+                  <input  class="form-control" type="text" id="name" name="name" placeholder="Name"/>
                 </div>
+                
                 <!-- Contact Number -->
-                <div class="form-group error">
+                <div class="form-group">
                   <label class="control-label" for="contactnumber">
                     Contact Number:
                   </label>
                   <i class="fa fa-check-circle" aria-hidden="true"></i>
                   <i class="fa fa-times-circle" aria-hidden="true"></i>
-                  <input class="form-control" type="text" id="contactnumber" name="contactnumber"/>
+                  <input class="form-control" type="text" id="contactnumber" name="contactnumber" placeholder="Contact Number"/>
                 </div>
+
                 <!-- Choose Theme -->
                 <div class="form-group">
                   <label class="control-label mr-3">
@@ -82,6 +85,7 @@
                     <label class="form-check-label" for="dark">Dark Mode</label>
                   </div>
                 </div>
+
                 <!-- Submit Button -->
                   <div class="button">
                     <button type="button" class="btn btn-success btn-sm" id="html" >Submit</button>
@@ -106,8 +110,41 @@
      </div>
   </main>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <script>
+    //target the form & content
+    const form = document.getElementById('form');
+    const name = document.getElementById('name');
+    const contactnumber = document.getElementById('contactnumber');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      checkInputs();
+    });
+
+    function checkInputs(){
+      //get the values from the inputs
+      const nameValue = name.value.trim();
+      const contactValue = contactnumber.value.trim();
+
+      if (nameValue === ''){
+        setErrorFor(nameValue, "Name cannot be blank");
+      }else{
+        // setSuccessFor(nameValue);
+      }
+    }
+
+    function setErrorFor(input, message){
+      const formGroup = input.parentElement; //.form-group
+      
+      //add error class
+      formGroup.className = 'form-group error';
+    }    
+  </script>
+
 </body>
 </html>
