@@ -150,7 +150,7 @@
         setSuccessFor(contactnumber);
       }
     
-      if (nameValue != '' & contactValue != ''){
+      if (nameValue != '' & contactValue != '' & numCheck.test(contactValue) != false){
         document.getElementById("right-sect").children[0].textContent = "You have succesfully submitted your contact details.";
       }
     }
