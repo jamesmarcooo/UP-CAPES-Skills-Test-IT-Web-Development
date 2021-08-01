@@ -123,12 +123,28 @@
     const form = document.getElementById('form');
     const name = document.getElementById('name');
     const contactnumber = document.getElementById('contactnumber');
-
-    form.addEventListener('submit', (event) => {
+    
+    //deletes the content of right-section
+    function blank(){
       event.preventDefault();
       document.getElementById("right-sect").children[0].textContent = "";
+    }
+
+    form.addEventListener('submit', (event) => {
+      blank();
       checkInputs();
     });
+
+    //removes content status if input was clicked before typing
+    name.addEventListener('click', (event) => {
+      blank();
+    });
+
+    contactnumber.addEventListener('click', (event) => {
+      blank();
+    });
+
+
 
     function checkInputs(){
       //get the values from the inputs
