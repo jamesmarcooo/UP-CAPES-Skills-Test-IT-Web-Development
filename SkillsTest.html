@@ -142,7 +142,9 @@
         setSuccessFor(name);
       }
 
-      if (contactValue === ''){
+      const numCheck = /^(09|\+639)\d{9}$/;
+
+      if (contactValue === '' || numCheck.test(contactValue) == false){
         setErrorFor(contactnumber, "Error: Please check all the details before submitting.");
       }else{
         setSuccessFor(contactnumber);
