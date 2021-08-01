@@ -35,6 +35,10 @@
       color: #e74c3c;
     }
 
+    .btn{
+      width: 100%;
+      padding: 12px;
+    }
   
   </style>
 
@@ -47,7 +51,7 @@
         <div class="col-12 col-sm-12 col-md-6">
           <div class="panel bg-light">
             <div class="panel-body p-3">
-              <form action="#" id="form">
+              <form action="#" id="form" class="form">
                 <h3 style="text-align:center;" for="name" class="form">
                     Contact Details
                  </h3>
@@ -88,7 +92,7 @@
 
                 <!-- Submit Button -->
                   <div class="button">
-                    <button type="button" class="btn btn-success btn-sm" id="html" >Submit</button>
+                    <button type="submit" class="btn btn-success btn-sm" id="html" >Submit</button>
                   </div>
                     
 
@@ -98,9 +102,9 @@
         </div>
 
         <!-- THE RIGHT SECTION -->
-        <div class="col-12 col-sm-12 col-md-6 h-100">
+        <div class="col-12 col-sm-12 col-md-6 h-100" >
           <div class="panel bg-dark text-white">
-            <div class="panel-body p-3">
+            <div class="panel-body p-3" id = "right-sect">
                 <p id="Output"></p>
               </div>
             </div>
@@ -115,14 +119,14 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
   <script>
-    //target the form & content
+    //targets the form & content
     const form = document.getElementById('form');
     const name = document.getElementById('name');
     const contactnumber = document.getElementById('contactnumber');
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      document.getElementById("right-sect").children[0].textContent = "";
       checkInputs();
     });
 
@@ -131,19 +135,43 @@
       const nameValue = name.value.trim();
       const contactValue = contactnumber.value.trim();
 
+      //check if the field was filled
       if (nameValue === ''){
-        setErrorFor(nameValue, "Name cannot be blank");
+        setErrorFor(name, "Error: Please check all the details before submitting.");
       }else{
-        // setSuccessFor(nameValue);
+        setSuccessFor(name);
+      }
+
+      if (contactValue === ''){
+        setErrorFor(contactnumber, "Error: Please check all the details before submitting.");
+      }else{
+        setSuccessFor(contactnumber);
+      }
+    
+      if (nameValue != '' & contactValue != ''){
+        document.getElementById("right-sect").children[0].textContent = "You have succesfully submitted your contact details.";
       }
     }
 
+
+
+    //Status Functions
     function setErrorFor(input, message){
       const formGroup = input.parentElement; //.form-group
       
       //add error class
       formGroup.className = 'form-group error';
+
+      document.getElementById("right-sect").children[0].textContent = message;
+      
     }    
+
+    function setSuccessFor(input){
+      const formGroup = input.parentElement; //.form-group
+      
+      //add error class
+      formGroup.className = 'form-group success';
+    }
   </script>
 
 </body>
