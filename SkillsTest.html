@@ -283,11 +283,11 @@
     function darkLight() {
       /*DARK CLASS*/
       if (localStorage.toggled != 'dark') {
-        $('#left-panel, p').toggleClass('dark', true);
+        $('#left-panel').toggleClass('dark', true);
         localStorage.toggled = "dark";
         
       } else {
-        $('#left-panel, p').toggleClass('dark', false);
+        $('#left-panel').toggleClass('dark', false);
         localStorage.toggled = "";
       }
     }
