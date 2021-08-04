@@ -41,6 +41,91 @@
     .btn{
       width: 100%;
       padding: 12px;
+      margin-top: 5px;
+    }
+
+
+    /*Theme UI Toggle*/
+    #toggle {
+      /* height: 100vh;
+      width: 100vw; */
+      transition: background 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    #toggle p {
+      align-self: center;
+      transition: color 0.3s ease;
+    }
+
+    /*TOGGLE COLORS*/
+    .dark {
+      background: #545454;
+      color: #efefef;
+    }
+
+    p, label, h3 {
+      background: none !important;
+    }
+
+    /*SWITCH*/
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      align-self: center;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+    }
+
+    input:checked + .slider {
+      background-color: #2196f3;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider {
+      border-radius: 5px;
+    }
+
+    .slider:before {
+      border-radius: 25%;
     }
   
   </style>
@@ -53,7 +138,7 @@
         <!-- THE LEFT SECTION -->
         <div class="col-12 col-sm-12 col-md-6">
           <div class="panel bg-light">
-            <div class="panel-body p-3">
+            <div class="panel-body p-3" id="left-panel">
               <form action="#" id="form" class="form">
                 <h3 style="text-align:center;" for="name" class="form">
                     Contact Details
@@ -78,29 +163,23 @@
                   <input class="form-control" type="text" id="contactnumber" name="contactnumber" placeholder="Contact Number"/>
                 </div>
 
-                <!-- Choose Theme -->
-                <div class="form-group">
-                  <label class="control-label mr-3">
-                    Choose Theme:
-                  </label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="modeOptions" id="light" value="Light">
-                    <label class="form-check-label" for="light">Light Mode</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="modeOptions" id="dark" value="Dark">
-                    <label class="form-check-label" for="dark">Dark Mode</label>
-                  </div>
-                </div>
-
                 <!-- Submit Button -->
                   <div class="button">
                     <button type="submit" class="btn btn-success btn-sm" id="html" >Submit</button>
                   </div>
-                    
 
               </form>
+              
             </div>
+          </div>
+          <!-- Choose Theme -->
+          <hr>
+          <div class="form-group" id="toggle">
+            <label class="control-label d-flex justify-content-center" for = "toggle-switch"> Toggle to Change Theme </label>
+            <label class="switch">
+              <input type="checkbox" onclick="darkLight()" id="checkBox" >
+              <span class="slider"></span>
+            </label>
           </div>
         </div>
 
@@ -199,22 +278,22 @@
   <!--Change Theme-->
   <script>
     //uses localstorage to saves input/theme when refreshed
-    $('#toggle').toggleClass(localStorage.toggled);
+    $('#left-panel').toggleClass(localStorage.toggled);
 
     function darkLight() {
       /*DARK CLASS*/
       if (localStorage.toggled != 'dark') {
-        $('#toggle, p').toggleClass('dark', true);
+        $('#left-panel, p').toggleClass('dark', true);
         localStorage.toggled = "dark";
         
       } else {
-        $('#toggle, p').toggleClass('dark', false);
+        $('#left-panel, p').toggleClass('dark', false);
         localStorage.toggled = "";
       }
     }
 
     /*Add 'checked' property to input if background == dark*/
-    if ($('#toggle').hasClass('dark')) {
+    if ($('#left-panel').hasClass('dark')) {
       $( '#checkBox' ).prop( "checked", true )
     } else {
       $( '#checkBox' ).prop( "checked", false )
