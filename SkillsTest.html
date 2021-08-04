@@ -10,6 +10,7 @@
   
   <style>
     
+    /*Form*/
     .form-group i{
       position:absolute;
       padding-left: 8px;
@@ -25,6 +26,7 @@
       border-color: #e74c3c;
     }
 
+    /*Input validation*/
     .form-group.success i.fa-check-circle{
       visibility:visible;
       color: #2ecc71;
@@ -35,6 +37,7 @@
       color: #e74c3c;
     }
 
+    /*Button*/
     .btn{
       width: 100%;
       padding: 12px;
@@ -118,6 +121,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+  <!--Validity of input-->
   <script>
     //targets the form & content
     const form = document.getElementById('form');
@@ -189,6 +193,31 @@
       
       //add error class
       formGroup.className = 'form-group success';
+    }
+  </script>
+
+  <!--Change Theme-->
+  <script>
+    //uses localstorage to saves input/theme when refreshed
+    $('#toggle').toggleClass(localStorage.toggled);
+
+    function darkLight() {
+      /*DARK CLASS*/
+      if (localStorage.toggled != 'dark') {
+        $('#toggle, p').toggleClass('dark', true);
+        localStorage.toggled = "dark";
+        
+      } else {
+        $('#toggle, p').toggleClass('dark', false);
+        localStorage.toggled = "";
+      }
+    }
+
+    /*Add 'checked' property to input if background == dark*/
+    if ($('#toggle').hasClass('dark')) {
+      $( '#checkBox' ).prop( "checked", true )
+    } else {
+      $( '#checkBox' ).prop( "checked", false )
     }
   </script>
 
