@@ -9,10 +9,10 @@ Milestone:
         b. Only numbers can be used to fill the input in contact.
         
     2. Theme
-        a. Uses localstorage to savs input/theme when refreshed.
+        a. Uses localstorage to save input/theme when refreshed.
         b. Uses checkbox instead of radio as an input type.
         c. Uses a toggle UI.
-        d. When the user has toggled on the Dark Mode, the left section should have a black background but white font. Toggling the Light Mode would revert to its original state.
+        d. When the user has toggled on the Dark Mode, the left form panel will have a black background but white font. Toggling the Light Mode would revert to its original state.
         
     3. Submit Button
         a. Satisfied all the three cases.
